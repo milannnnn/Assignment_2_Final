@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-
-// Class for 
-
+//####################################################################################################
+//# Data Processing Class - for Reading, Sorting and Normalizing System State Data from SQL Database #
+//####################################################################################################
 public class FillStates {
 	
 	// #######################################################################################################
@@ -31,11 +31,11 @@ public class FillStates {
 					break;
 				}
 			}
-			// If we don't have the state for given time, create a new one
+			// If we don't have a state for given time instance, create a new one
 			if(pos == -1){
 				allStates.add(new SystemState(resData[k]));
 			}
-			// If we have the state for given time, just update the values
+			// If we have a state for given time instance, just add the values
 			else{
 				allStates.get(pos).addData(resData[k]);
 			}
@@ -55,7 +55,7 @@ public class FillStates {
 			}
 			else{
 				if(k1!=allStates.get(k).buses.size()){
-					System.out.println("Inconsistent State Dimensions (measurements)!!!");
+					System.out.println("Inconsistent State Dimensions (number of measurements)!!!");
 					System.out.println("Please correct input data and try again!!!");
 					terminateProgram();
 				}

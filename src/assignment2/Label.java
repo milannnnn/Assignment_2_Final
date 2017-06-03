@@ -1,9 +1,9 @@
 package assignment2;
 
 import java.util.ArrayList;
-
-//TODO Label the data Without Normalization
-
+//#######################################################################################
+//# System State Labeling Class - to Determine Operating States of the Created Clusters #
+//#######################################################################################
 public class Label {
 	
 	// ############################################################################################################

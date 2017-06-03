@@ -17,12 +17,9 @@ public class SystemState {
 		}
 	}
 	
-	public String label;
-	public int time;
-	
-	//### Save Min and Max Values - to be able to revert to original values (if needed)
-	public double[] minAngles, maxAngles, minVolts, maxVolts;
-
+	public String label; // Operating State Label
+	public int time; // Time Instance of the State
+	public double[] minAngles, maxAngles, minVolts, maxVolts; // Normalization Values
 	public ArrayList<BusObject> buses = new ArrayList<BusObject>(); // Bus ID, Voltage, Angle
 	
 	// ###########################################################
