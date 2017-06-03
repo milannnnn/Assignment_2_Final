@@ -8,7 +8,7 @@ import java.util.Random;
 
 // Given a set of measurements, the algorithm separates them in the required number of clusters applying the k-mean method
 // The first centroids can be determined either using the fory method or the RPM
-// up-scaling can be applied (a larger number of clusters is used and then reduced to the required number)
+// Up-scaling can be applied (a larger number of clusters is used and then reduced to the required number)
 
 public class Kmean {
 	// SystemList is an ArrayList, where each element is a SystemState

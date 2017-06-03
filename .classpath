@@ -3,8 +3,8 @@
 	<classpathentry excluding="Resource/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/Resource"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Milan/Desktop/KTH/Semester 2/Computer Applications in Power Systems - EH2745/Hand Ons/Java/Assignment_2/external libraries/jcommon-1.0.23.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Milan/Desktop/KTH/Semester 2/Computer Applications in Power Systems - EH2745/Hand Ons/Java/Assignment_2/external libraries/jfreechart-1.0.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Milan/Desktop/KTH/Semester 2/Computer Applications in Power Systems - EH2745/Hand Ons/Java/Assignment_2/external libraries/mysql-connector-java-5.1.41-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Matteo/workspace/Assignment_2/external libraries/mysql-connector-java-5.1.41-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Matteo/workspace/Assignment_2/external libraries/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Matteo/workspace/Assignment_2/external libraries/jcommon-1.0.23.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
