@@ -18,7 +18,7 @@ public class SQLprinter {
 	private static String USER;
 	private static String PASS;
 	// define the name of the database
-	public static String dataBaseName = "subtables";
+	public static String dataBaseName ;
 	public static Connection conn;
 	public static Statement stmt;
 	// ############################################################################################################
@@ -26,11 +26,12 @@ public class SQLprinter {
 	// Inputs:
 		// USER: username of SQL database
 		// PASS: password of SQL 
-	public SQLprinter(String USER,String PASS){
+	public SQLprinter(String USER,String PASS, String DBName){
 		// JDBC driver name and database URL
 		// Database credentials
 		SQLprinter.USER = USER;
 		SQLprinter.PASS = PASS;
+		dataBaseName = DBName;
 		conn = null;
 		stmt = null;
 		try{
@@ -59,7 +60,7 @@ public class SQLprinter {
 	// ############################################################################################################
 	// default constructor with default user and password
 	public SQLprinter(){
-		this("root","root");
+		this("root","root","subtables");
 	}
 	// ############################################################################################################
 	// method to read a table

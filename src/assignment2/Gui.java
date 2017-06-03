@@ -42,6 +42,10 @@ public class Gui extends JFrame {
 	private JTextField maxIterText;
 	private JTextField neighborsNumTitle;
 	private JTextField neighborsNumText;
+	private JTextField DBSettings;
+	private JTextField DBnameText;
+	private JTextField learnSetTab;
+	private JTextField testSetTab;
 	// buttons
 	private JRadioButton defb;
 	private JRadioButton cusb;
@@ -63,6 +67,9 @@ public class Gui extends JFrame {
 	// set default variables
 	private String USER = "root";
 	private String PASS = "root";
+	private String DBName = "subtables";
+	private String learnSetTabName = "measurements";
+	private String testSetTabName = "analog_values";
 	private int tempClusters = 16; // number of temporary clusters
 	private String KmeanMethod = "forgy"; // k-mean clustering method
 	ArrayList<ArrayList<SystemState>> Clusters;
@@ -88,11 +95,11 @@ public class Gui extends JFrame {
 		if(widthScreen>=1920){
 			widthScreen  = 1920.0;
 			heightScreen = 1080.0;
-			consoleHeight = (int) (0.407*heightScreen);
+			consoleHeight = (int) (0.345*heightScreen);
 			consoleWidth  = (int) (0.595* widthScreen);
 		}
 		else if(widthScreen==1366){
-			consoleHeight = (int) (0.3*heightScreen);
+			consoleHeight = (int) (0.27*heightScreen);
 			consoleWidth  = (int) (0.595* widthScreen);
 		}
 		else{
@@ -155,6 +162,39 @@ public class Gui extends JFrame {
 		tf2.setEnabled(false);
 		add(tf2);
 		// #####
+		
+		// Text fields DBname
+		// user
+		DBSettings = new JTextField("DATA BASE SETTINGS (DB name, learnset table name, testset table name)", textWidth);
+		DBSettings.setEditable(false);
+		DBSettings.setFont(new Font("Serif",Font.BOLD, 18));
+		DBSettings.setHorizontalAlignment(JTextField.CENTER);
+		DBSettings.setBackground(Color.GRAY);
+		add(DBSettings);
+		DBnameText = new JTextField("subtables", 15);
+		DBnameText.setFont(new Font("Serif",Font.PLAIN, 18));
+		DBnameText.setHorizontalAlignment(JTextField.CENTER);
+		DBnameText.setToolTipText("insert MySQL DB name and press Enter");
+		// by default they are set not editable
+		DBnameText.setEditable(false);
+		DBnameText.setEnabled(false);
+		add(DBnameText);
+		learnSetTab = new JTextField("measurements", 15);
+		learnSetTab.setFont(new Font("Serif",Font.PLAIN, 18));
+		learnSetTab.setHorizontalAlignment(JTextField.CENTER);
+		learnSetTab.setToolTipText("insert learn set table name and press Enter");
+		// by default they are set not editable
+		learnSetTab.setEditable(false);
+		learnSetTab.setEnabled(false);
+		add(learnSetTab);
+		testSetTab = new JTextField("analog_values", 15);
+		testSetTab.setFont(new Font("Serif",Font.PLAIN, 18));
+		testSetTab.setHorizontalAlignment(JTextField.CENTER);
+		testSetTab.setToolTipText("insert test set table name and press Enter");
+		// by default they are set not editable
+		testSetTab.setEditable(false);
+		testSetTab.setEnabled(false);
+		add(testSetTab);
 		
 		// random partition - forgy method radio buttons plus text title
 		// title
@@ -315,6 +355,11 @@ public class Gui extends JFrame {
 		EnterHandler enterhandler = new EnterHandler();
 		tf1.addActionListener(enterhandler);
 		tf2.addActionListener(enterhandler);
+		// DB settings
+		EnterDBNameHandler enterDBNameHandler = new EnterDBNameHandler();
+		DBnameText.addActionListener(enterDBNameHandler);
+		learnSetTab.addActionListener(enterDBNameHandler);
+		testSetTab.addActionListener(enterDBNameHandler);
 		// number of temporary clusters
 		EnterHandlerCluster enterHandlerCluster = new EnterHandlerCluster();
 		numTempClustersValue.addActionListener(enterHandlerCluster);
@@ -386,7 +431,10 @@ public class Gui extends JFrame {
 				PASS = "root";
 				tempClusters = 16;
 				KmeanMethod = "forgy";
-				customOpt=false;
+				customOpt = false;
+				DBName = "subtables";
+				learnSetTabName = "measurements";
+				testSetTabName = "analog_values";
 				tf1.setEditable(customOpt);
 				tf2.setEditable(customOpt);
 				tf1.setEnabled(customOpt);
@@ -411,6 +459,12 @@ public class Gui extends JFrame {
 				topologybutton.setEnabled(customOpt);
 				generalbutton.setEnabled(customOpt);
 				labelingGen = false;
+				DBnameText.setEditable(customOpt);
+				DBnameText.setEnabled(customOpt);
+				learnSetTab.setEditable(customOpt);
+				learnSetTab.setEnabled(customOpt);
+				testSetTab.setEditable(customOpt);
+				testSetTab.setEnabled(customOpt);
 			}
 			// if custom options are selected
 			else if(cusb.isSelected() == true){
@@ -444,15 +498,9 @@ public class Gui extends JFrame {
 			else if(event.getSource()==tf2){
 				PASS = event.getActionCommand();
 				JOptionPane.showMessageDialog(null, "PASSWORD successfully inserted");
-				RPMbutton.setEnabled(customOpt);
-				forgybutton.setEnabled(customOpt);
-				downScaleCB.setEnabled(customOpt);
-				buttCluster.setEnabled(customOpt);
-				maxIterText.setEditable(customOpt);
-				maxIterText.setEnabled(customOpt);
-				maxIterTitle.setEnabled(customOpt);
-				topologybutton.setEnabled(customOpt);
-				generalbutton.setEnabled(customOpt);
+				DBnameText.setEditable(customOpt);
+				DBnameText.setEnabled(customOpt);
+				
 			
 			}
 			// when down-scale check-box is checked
@@ -471,6 +519,39 @@ public class Gui extends JFrame {
 			}
 		}
 	}
+	// ############################################################################################################
+		// handle enter press on SQL DB name text field
+		private class EnterDBNameHandler implements ActionListener{
+			public void actionPerformed(ActionEvent event){
+				// when enter is pressed on USER field
+				if(event.getSource()==DBnameText){
+					DBName = event.getActionCommand();
+					JOptionPane.showMessageDialog(null, "DB name successfully inserted");
+					learnSetTab.setEditable(customOpt);
+					learnSetTab.setEnabled(customOpt);
+					testSetTab.setEditable(customOpt);
+					testSetTab.setEnabled(customOpt);
+				}
+				// when enter is pressed on PASS field
+				else if(event.getSource()==learnSetTab){
+					learnSetTabName = event.getActionCommand();
+					JOptionPane.showMessageDialog(null, "Learn set table name successfully inserted");
+				}
+				else if(event.getSource()==testSetTab){
+					testSetTabName = event.getActionCommand();
+					JOptionPane.showMessageDialog(null, "Test set table name successfully inserted");
+					RPMbutton.setEnabled(customOpt);
+					forgybutton.setEnabled(customOpt);
+					downScaleCB.setEnabled(customOpt);
+					buttCluster.setEnabled(customOpt);
+					maxIterText.setEditable(customOpt);
+					maxIterText.setEnabled(customOpt);
+					maxIterTitle.setEnabled(customOpt);
+					topologybutton.setEnabled(customOpt);
+					generalbutton.setEnabled(customOpt);
+				}
+			}
+		}
 	// ############################################################################################################
 	// handle max iterations number insertion
 	private class EnterHandleriter implements ActionListener{
@@ -584,7 +665,7 @@ public class Gui extends JFrame {
 				public void run(){
 					// read the database and create an ArrayList of SystemStates 
 					FillStates fillings = new FillStates();
-					ArrayList<SystemState> allStates = fillings.getStates(USER, PASS, "measurements");
+					ArrayList<SystemState> allStates = fillings.getStates(USER, PASS, learnSetTabName,DBName);
 					// apply k-mean algorithm on the read SystemStates t divide them in 4 clusters
 					Kmean kmeanTest = new Kmean(allStates, 1e-16, maxIter);
 					Clusters = kmeanTest.kMeanClustering(tempClusters,clusterNum,KmeanMethod);
@@ -705,7 +786,7 @@ public class Gui extends JFrame {
 						learnSet.addAll(Clusters.get(i));
 					}
 					// read the values from the analog_values table and create the relative SystemStates to classify
-					ArrayList<SystemState> testSet = fillings.getStates(USER, PASS, "analog_values");
+					ArrayList<SystemState> testSet = fillings.getStates(USER, PASS, testSetTabName ,DBName);
 					// set the order of the buses in order to coincide with the learnSet's one
 					String[] busOrder = new String[learnSet.get(0).buses.size()];
 					for(int k=0; k<learnSet.get(0).buses.size(); k++){

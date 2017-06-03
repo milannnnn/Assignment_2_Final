@@ -11,10 +11,10 @@ public class FillStates {
 	
 	// #######################################################################################################
 	// Method to Extract (from SQL), Sort and Normalize System State Data (returns ArrayList of System States)  
-	public ArrayList<SystemState> getStates(String user, String pass, String tableName){
+	public ArrayList<SystemState> getStates(String user, String pass, String tableName, String DBName){
 		
 		//### Read Data from SQL Table
-		SQLprinter newPrinter = new SQLprinter(user,pass);
+		SQLprinter newPrinter = new SQLprinter(user,pass,DBName);
 		String[] colName = {"name","time","value","sub_rdfid"};
 		String[][] resData = newPrinter.readTable(tableName, colName);
 		newPrinter.exit();
