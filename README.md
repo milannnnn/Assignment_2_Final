@@ -1,12 +1,12 @@
 The JAVA source files (src folder) for the 2nd Assignment Computer Application Assignment.
 
-
-
 All the code is located in the "src\assignment2" folder.
 
 All utilized external libraries are located in "external libraries" folder.
 
-To start the program please run the "RunMe.jar" file (it integrates all external libraries).
+Operating State Labeling Methodology is described in "Labeling Rules.pdf" document.
+
+To start the program please run the "RunMe.jar" file (it integrates all required external libraries).
 
 SystemState.java 				- System State Object Representation class and Data Manipulation Methods
 
