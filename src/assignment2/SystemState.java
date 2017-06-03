@@ -1,8 +1,9 @@
 package assignment2;
 
 import java.util.ArrayList;
-
-// ### Object Container Class - for Power System State Representation with Additional Data Manipulation Methods
+//################################################################################################
+//# Object Container Class - for Power System State Representation and Data Manipulation Methods #
+//################################################################################################
 public class SystemState {
 	
 	class BusObject{
@@ -110,7 +111,6 @@ public class SystemState {
 		buses.clear();
 		buses.addAll(tmpBuses);
 	}
-	
 	
 	// ###########################################################
 	// Normalize all State Variables with Min and Max Values
