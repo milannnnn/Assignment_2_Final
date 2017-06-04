@@ -1,5 +1,7 @@
 The JAVA source files (src folder) for the 2nd Assignment Computer Application Assignment.
 
+### Update: The GUI was modified so it can read different SQL Databases.
+
 All the code is located in the "src\assignment2" folder.
 
 All utilized external libraries are located in "external libraries" folder.
