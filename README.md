@@ -1,4 +1,4 @@
-# The JAVA source code for the 2nd EH2745 Assignment.
+# JAVA source code for the 2nd EH2745 Assignment
 
 ### Update (June 4th): GUI was modified to allow input of different SQL Databases.
 
