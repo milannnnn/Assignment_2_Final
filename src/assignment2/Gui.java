@@ -99,11 +99,11 @@ public class Gui extends JFrame {
 			consoleWidth  = (int) (0.595* widthScreen);
 		}
 		else if(widthScreen==1366){
-			consoleHeight = (int) (0.27*heightScreen);
+			consoleHeight = (int) (0.138*heightScreen);
 			consoleWidth  = (int) (0.595* widthScreen);
 		}
 		else{
-			consoleHeight = (int) (0.22*heightScreen);
+			consoleHeight = (int) (0.20*heightScreen);
 			consoleWidth  = (int) (0.595* widthScreen);
 		}
 		
