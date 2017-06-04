@@ -1,6 +1,6 @@
 # The JAVA source code for the 2nd EH2745 Assignment.
 
-### Update (June 4th): GUI was modified to accomodate input of different SQL Databases.
+### Update (June 4th): GUI was modified to allow input of different SQL Databases.
 
 ### To start the program please run the "RunMe.jar" file (it integrates all required external libraries).
 
